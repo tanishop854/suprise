@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Ready for a Surprise</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #ffe6f0;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      flex-direction: column;
+    }
+    h1 {
+      font-size: 2em;
+      margin-bottom: 20px;
+    }
+    button {
+      padding: 10px 20px;
+      font-size: 16px;
+      margin: 10px;
+      cursor: pointer;
+      border: none;
+      border-radius: 10px;
+    }
+    #noBtn {
+      position: absolute;
+    }
+  </style>
+</head>
+<body>
+  <h1>Ready For a Surprise?</h1>
+  <button onclick="goToBirthday()">Yes</button>
+  <button id="noBtn" onmouseover="moveButton()">No</button>
+
+  <script>
+    function goToBirthday() {
+      window.location.href = 'birthday.html';
+    }
+
+    function moveButton() {
+      const btn = document.getElementById('noBtn');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 50);
+      btn.style.left = x + 'px';
+      btn.style.top = y + 'px';
+    }
+  </script>
+</body>
+</html>
