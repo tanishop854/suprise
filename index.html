@@ -14,6 +14,7 @@
       justify-content: center;
       height: 100vh;
       margin: 0;
+      overflow: hidden;
     }
     .container {
       text-align: center;
@@ -27,38 +28,34 @@
       background-color: #ff69b4;
       color: white;
       cursor: pointer;
+      position: relative;
     }
-    .btn:hover {
-      background-color: #ff1493;
-    }
-    .candle {
-      margin-top: 30px;
-      font-size: 30px;
-      font-weight: bold;
-      color: #ff4500;
+    #noButton {
+      position: absolute;
     }
   </style>
 </head>
 <body>
   <div class="container">
-    <h1>Do you want to see a surprise?</h1>
+    <h1>Ready for a Surprise?</h1>
     <button class="btn" onclick="startSurprise()">Yes</button>
-    <button class="btn" onclick="alert('Maybe next time!')">No</button>
-    <div id="surprise" style="display: none;">
-      <h2 class="candle">Click on the candle to start the celebration!</h2>
-      <img src="cake.png" alt="Birthday Cake" width="300" onclick="playMusic()" />
-      <audio id="birthdayMusic" src="happy_birthday.mp3"></audio>
-    </div>
+    <button class="btn" id="noButton" onmouseover="moveButton()">No</button>
   </div>
+
+  <audio id="birthdayMusic" src="happy_birthday.mp3"></audio>
 
   <script>
     function startSurprise() {
-      document.getElementById('surprise').style.display = 'block';
+      document.getElementById("birthdayMusic").play();
+      window.location.href = "birthday.html";
     }
 
-    function playMusic() {
-      const music = document.getElementById('birthdayMusic');
-      music.play();
+    function moveButton() {
+      const button = document.getElementById('noButton');
+      const x = Math.random() * (window.innerWidth - 100);
+      const y = Math.random() * (window.innerHeight - 100);
+      button.style.left = x + 'px';
+      button.style.top = y + 'px';
     }
   </script>
 </body>
