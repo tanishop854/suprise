@@ -2,51 +2,63 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Ready for a Surprise</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Birthday Surprise</title>
   <style>
     body {
-      font-family: Arial, sans-serif;
-      background-color: #ffe6f0;
+      font-family: 'Comic Sans MS', cursive;
+      background-color: #fff0f5;
       display: flex;
-      justify-content: center;
-      align-items: center;
-      height: 100vh;
       flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      height: 100vh;
+      margin: 0;
     }
-    h1 {
-      font-size: 2em;
-      margin-bottom: 20px;
+    .container {
+      text-align: center;
     }
-    button {
-      padding: 10px 20px;
-      font-size: 16px;
+    .btn {
+      padding: 12px 24px;
       margin: 10px;
-      cursor: pointer;
+      font-size: 20px;
       border: none;
-      border-radius: 10px;
+      border-radius: 8px;
+      background-color: #ff69b4;
+      color: white;
+      cursor: pointer;
     }
-    #noBtn {
-      position: absolute;
+    .btn:hover {
+      background-color: #ff1493;
+    }
+    .candle {
+      margin-top: 30px;
+      font-size: 30px;
+      font-weight: bold;
+      color: #ff4500;
     }
   </style>
 </head>
 <body>
-  <h1>Ready For a Surprise?</h1>
-  <button onclick="goToBirthday()">Yes</button>
-  <button id="noBtn" onmouseover="moveButton()">No</button>
+  <div class="container">
+    <h1>Do you want to see a surprise?</h1>
+    <button class="btn" onclick="startSurprise()">Yes</button>
+    <button class="btn" onclick="alert('Maybe next time!')">No</button>
+    <div id="surprise" style="display: none;">
+      <h2 class="candle">Click on the candle to start the celebration!</h2>
+      <img src="cake.png" alt="Birthday Cake" width="300" onclick="playMusic()" />
+      <audio id="birthdayMusic" src="happy_birthday.mp3"></audio>
+    </div>
+  </div>
 
   <script>
-    function goToBirthday() {
-      window.location.href = 'birthday.html';
+    function startSurprise() {
+      document.getElementById('surprise').style.display = 'block';
     }
 
-    function moveButton() {
-      const btn = document.getElementById('noBtn');
-      const x = Math.random() * (window.innerWidth - 100);
-      const y = Math.random() * (window.innerHeight - 50);
-      btn.style.left = x + 'px';
-      btn.style.top = y + 'px';
+    function playMusic() {
+      const music = document.getElementById('birthdayMusic');
+      music.play();
     }
   </script>
 </body>
